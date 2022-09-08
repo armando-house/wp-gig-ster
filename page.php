@@ -9,16 +9,18 @@
  * @since Twenty Twenty-One 1.0
  */
 
-get_header(); ?>
+get_header(); 
     
-    <section class="site-width content-section" >
-        <div class="inner-title"><?php dynamic_sidebar( 'sidebar-3' ); ?></div>
-        <?php if('' !== get_post()->post_content) : ?>
-        <div class="content-inner">
-            <?php  the_content(); ?>
+?>
+    
+    <?php for ($i = 0; $i<$len; $i++) { ?>
+        <div id="content<?php echo ($i+1);?>" class="story content-section ">
+            <div class="navspace top"></div>
+            <div class="content-inner content">
+                <?php echo $arr_post[$i]->post_content; ?>
+            </div>
+            <div class="bottomspace"></div>
         </div>
-        <?php endif; ?>
-        
-    </section>
-    
+    <?php }?>
+    <div id="contentlast"></div>
 <?php get_footer();

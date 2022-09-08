@@ -429,6 +429,9 @@ add_action( 'after_setup_theme', 'twenty_twenty_one_content_width', 0 );
  * @return void
  */
 function twenty_twenty_one_scripts() {
+
+	//wp_enqueue_style( 'twenty-twenty-one-style', get_template_directory_uri() . '/assets/css/reset.css', array(), wp_get_theme()->get( 'Version' ) );
+
 	// Note, the is_IE global variable is defined by WordPress and is used
 	// to detect if the current browser is internet explorer.
 	global $is_IE, $wp_scripts;
@@ -439,6 +442,8 @@ function twenty_twenty_one_scripts() {
 		// If not IE, use the standard stylesheet.
 		wp_enqueue_style( 'twenty-twenty-one-style', get_template_directory_uri() . '/style.css', array(), wp_get_theme()->get( 'Version' ) );
 	}
+
+
 
 	// RTL styles.
 	wp_style_add_data( 'twenty-twenty-one-style', 'rtl', 'replace' );
@@ -499,10 +504,34 @@ function twenty_twenty_one_scripts() {
 	);
 
 	wp_enqueue_script(
-		'custom-js',
+		'jquery-script',
+		get_template_directory_uri() . '/assets/js/jquery-3.3.1.min.js',
+		array( 'twenty-twenty-one-ie11-polyfills' ),
+		'',
+		false
+	);
+
+	wp_enqueue_script(
+		'jquery-waypoints-script',
+		get_template_directory_uri() . '/assets/js/jquery.waypoints.js',
+		array( 'twenty-twenty-one-ie11-polyfills' ),
+		'',
+		false
+	);
+
+	wp_enqueue_script(
+		'waypoints-debug-script',
+		get_template_directory_uri() . '/assets/js/waypoints.debug.js',
+		array( 'twenty-twenty-one-ie11-polyfills' ),
+		'',
+		true
+	);
+
+	wp_enqueue_script(
+		'custom-script',
 		get_template_directory_uri() . '/assets/js/custom.js',
 		array( 'twenty-twenty-one-ie11-polyfills' ),
-		wp_get_theme()->get( 'Version' ),
+		'',
 		true
 	);
 }
