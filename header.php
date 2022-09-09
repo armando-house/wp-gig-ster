@@ -91,9 +91,11 @@
 	$isofeaturedimage = get_the_post_thumbnail_url();
 
 	$args = array(
-	  'post_type' => 'post',
-	  'posts_per_page' => 3,
-	'category_name' => $cate_name,
+		'post_type' => 'post',
+		'posts_per_page' => -1,
+		'category_name' => $cate_name,
+		'order_by' => 'tag',
+		'order' => 'ASC',
 	);
 	$query = new WP_Query( $args );
 	global $arr_post;
@@ -102,14 +104,17 @@
 	global $len;
 	$len = count($arr_post);
 
+	// echo "<pre>";
+	// var_dump($arr_post);
+	// exit;
 	Wp_reset_query();
 
 ?>
 <style type="text/css">
 
-#background_wrap {background:url(<?=$isofeaturedimage ;?>) 50% 0 no-repeat fixed; }
+#background_wrap {background:url(<?=$isofeaturedimage ;?>) 50% 0 no-repeat fixed; background-size: cover;}
 
-.main {background:url(<?=$isofeaturedimage ;?>) 50% 0 no-repeat fixed;}
+.main {background:url(<?=$isofeaturedimage ;?>) 50% 0 no-repeat fixed; background-size: cover;}
 
 <?php for ($i = 0; $i<$len; $i++) { ?>
 	.main #content<?php echo ($i+1);?> { background:url(<?php echo get_the_post_thumbnail_url($arr_post[$i]->ID);?>) 50% 0 no-repeat ;background-size: cover; background-attachment: fixed;}	
@@ -120,7 +125,7 @@
 <div class="leftnav">
 	<ul>
 		<?php for ($i = 0; $i<$len; $i++) { ?>
-			<li id="content<?php echo ($i+1);?>"><a href="javascript:void();" onclick="scrollTo2('<?php echo ($i+1);?>');"><?=$arr_post[$i]->post_name;?></a></li>
+			<li id="content<?php echo ($i+1);?>"><a href="javascript:void();" onclick="scrollTo2('<?php echo ($i+1);?>');"><?=$arr_post[$i]->post_title;?></a></li>
 		<?php } ?>
 	</ul>
 </div>

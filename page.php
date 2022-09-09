@@ -13,14 +13,18 @@ get_header();
     
 ?>
     
-    <?php for ($i = 0; $i<$len; $i++) { ?>
+    <?php for ($i = 0; $i<$len; $i++) { 
+        setup_postdata( $arr_post[$i] );
+        ?>
         <div id="content<?php echo ($i+1);?>" class="story content-section ">
             <div class="navspace top"></div>
             <div class="content-inner content">
-                <?php echo $arr_post[$i]->post_content; ?>
+                <?php the_content(); ?>
             </div>
             <div class="bottomspace"></div>
         </div>
-    <?php }?>
+    <?php 
+        wp_reset_postdata();
+    }?>
     <div id="contentlast"></div>
 <?php get_footer();

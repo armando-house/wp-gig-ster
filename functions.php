@@ -723,3 +723,11 @@ if ( ! function_exists( 'wp_get_list_item_separator' ) ) :
 		return __( ', ', 'twentytwentyone' );
 	}
 endif;
+
+
+function my_change_posts_order( $query ){
+    if ( ! is_admin() && ( is_category() || is_tag() ) && $query->is_main_query() ) {
+        $query->set( 'order', 'ASC' );
+    }
+};
+add_action( 'pre_get_posts', 'my_change_posts_order'); 

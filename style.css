@@ -3814,7 +3814,7 @@ table.wp-calendar-table caption {
 
 .site-branding {
 	color: var(--branding--color-text);
-	margin-right: 140px;
+/* 	margin-right: 140px; */
 }
 
 .site-branding:last-child {
@@ -6025,6 +6025,7 @@ h3{
 
 h4 {
 	font-size: 24px;
+	color: #020408;
 }
 
 body{
@@ -6054,17 +6055,23 @@ body{
 	justify-content: space-between;
 	align-items: center;
 	color: #b1b0b0;
-	font-size: 28px;
+	font-size: 24px;
+}
+
+.header-inner .widget a{
+	color: #b1b0b0;
+	font-size: 24px;
+	text-decoration: none;
 }
 
 .site-header nav ul li a{
 	color: #8d8d8d !important;
-	font-size: 28px;
+	font-size: 24px;
 }
 
 .site-header nav ul a:visited{
 	color: #8d8d8d !important;
-	font-size: 28px;
+	font-size: 24px;
 }
 
 .header-inner .widget {
@@ -6100,7 +6107,7 @@ body{
 		font-size: 22px;
 	}
 
-	.site-header .phone-wrapper {
+	.site-header .phone-wrapper a {
 		
 		font-size: 22px;
 	}
@@ -6110,7 +6117,7 @@ body{
 	}
 }
 
-@media only screen and (max-width: 1113px) {
+@media only screen and (max-width: 1116px) {
 	.header-inner {
 	    display: block;
 	}
@@ -6154,8 +6161,8 @@ body{
 	max-width: none; 
 	height: 98px; 
 	display: flex; 
-	position: fixed;
-	bottom: 0;
+	position: relative;
+	margin-top: -98px;
 }
 
 .site-footer .widget{
